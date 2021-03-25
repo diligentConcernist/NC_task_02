@@ -1,3 +1,23 @@
+(function(){
+    let defaultLog = console.log;
+    console.log = function() {
+        let message = [];
+        while(arguments.length) {
+            message.push("We got the following from Stack: " + [].shift.call(arguments));
+        }
+    defaultLog.apply(console, message);
+    }
+
+    let defaultWarn = console.warn;
+    console.warn = function() {
+        let message = [];
+        while(arguments.length) {
+            message.push("Warning from Stack! " + [].shift.call(arguments));
+        }
+        defaultWarn.apply(console, message);
+    }  
+})();
+
 class Stack {
     constructor() {
         this.data = [];
@@ -10,7 +30,7 @@ class Stack {
     }
 
     length() {
-        return this.top - 1;
+        return this.top + 1;
     }
 
     isEmpty() {
@@ -31,21 +51,45 @@ class Stack {
 
 let stack = null;
 
+function reverse_array(array) {
+    let reversedArray = [];
+    for (let i = 0; i < array.length; i++) {
+        reversedArray[i] = array[(array.length - 1) - i];
+    }
+    return reversedArray;
+}
+
+function get_data() {
+    let data = this.data;
+    console.log("Data from stack is " + reverse_array(data));
+    return reverse_array(data);
+}
+
+function get_top() {
+    let top = this.top;
+    console.log("Top element is " + top);
+}
+
 function create_stack() {
-    stack = new Stack();
-    document.getElementById("createStack").disabled = true;
-    document.getElementById("fillStack").disabled = false;
-    document.getElementById("elementField").disabled = false;
-    document.getElementById("addElement").disabled = false;
-    document.getElementById("peekElement").disabled = false;
-    document.getElementById("popElement").disabled = false;
-    document.getElementById("printStack").disabled = false;
-    document.getElementById("stackField").disabled = false;
+    if (stack == null) {
+        stack = new Stack();
+        document.getElementById("createStack").disabled = true;
+        document.getElementById("fillStack").disabled = false;
+        document.getElementById("elementField").disabled = false;
+        document.getElementById("addElement").disabled = false;
+        document.getElementById("peekElement").disabled = false;
+        document.getElementById("popElement").disabled = false;
+        document.getElementById("printStack").disabled = false;
+        document.getElementById("stackField").disabled = false;
+        document.getElementById("clearStack").disabled = false;
+    }
 }
 
 function fill_stack() {
-    for (let i = 0; i < 10; i++) {
-        stack.push(Math.floor(Math.random() * 11));
+    if (stack != null) {
+        for (let i = 0; i < 10; i++) {
+            stack.push(Math.floor(Math.random() * 11));
+        }
     }
 }
 
@@ -59,11 +103,10 @@ function add_element() {
 
 function peek_element() {
     if (stack != null && stack.isEmpty() == false) {
-        console.log("Element on top of this stack is " + stack.peek());
+        let result = get_top.call(stack);
     }
-
     else if (stack.isEmpty != false) {
-        console.log("Stack is empty!");
+        console.warn("Stack is empty!");
     }
 }
 
@@ -73,22 +116,37 @@ function pop_element() {
     }
 
     else if (stack.isEmpty != false) {
-        console.log("Stack is empty!");
+        console.warn("Stack is empty!");
     }
 }
 
 function print_stack() {
     if (stack != null && stack.isEmpty() == false) {
-        let result = "";
-        while (stack.isEmpty() == false) {
-            result = result + stack.pop() + "\n";
-            top--;
+        let result = get_data.apply(stack);
+        result += "";
+        let finalResult = result.split(",");
+        result = "";
+        for (let i = 0; i < stack.length(); i++) {
+            result += finalResult[i] + "\n";
         }
         document.getElementById("stackField").value = result;
     }
 
     else if (stack.isEmpty != false) {
-        console.log("Stack is empty!");
+        console.warn("Stack is empty!");
     }
-    
+}
+
+function clear_stack() {
+    if (stack != null && stack.isEmpty() == false) {
+        while(stack.isEmpty() == false) {
+            stack.pop();
+        }
+        document.getElementById("stackField").value = "";
+        console.log("Stack is cleared");
+    }
+
+    else if (stack.isEmpty != false) {
+        console.warn("Stack is empty!");
+    }
 }
