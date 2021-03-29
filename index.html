@@ -9,22 +9,23 @@
     <body>
         <h1>Структура данных "Стек"</h1>
         <form name="" onsubmit="return false;">
-            <button id="createStack" onclick="create_stack()">Создать стек</button>
+            <button id="createStack" class="controls">Создать стек</button>
             <br>
-            <button id="fillStack" disabled="true" onclick="fill_stack()">Добавить в стек 10 случайных чисел</button>
+            <button id="fillStack" class="controls">Добавить в стек 10 случайных чисел</button>
             <br>
-            <label for="elementField">Добавление элемента:</label><input type="textarea" id="elementField" disabled="true">
-            <button id="addElement" disabled="true" onclick="add_element()">Добавить элемент</button>
+            <label for="elementField">Добавление элемента:</label><input type="textarea" id="elementField" 
+            class="controls">
+            <button id="addElement" class="controls">Добавить элемент</button>
             <br>
-            <button id="peekElement" disabled="true" onclick="peek_element()">Подсмотреть элемент на вершине стека</button>
+            <button id="peekElement" class="controls">Подсмотреть элемент на вершине стека</button>
             <br>
-            <button id="popElement" disabled="true" onclick="pop_element()">Показать элемент на вершине стека и убрать его</button>
+            <button id="popElement" class="controls">Показать элемент на вершине стека и убрать его</button>
             <br>
-            <button id="printStack" disabled="true" onclick="print_stack()">Вывести весь стек</button>
+            <button id="printStack" class="controls">Вывести весь стек</button>
             <br>
-            <button id="clearStack" disabled="true" onclick="clear_stack()">Очистить стек</button>
+            <button id="clearStack" class="controls">Очистить стек</button>
             <br>
-            <textarea id="stackField" disabled="true" rows="15" cols="5"></textarea>
+            <textarea id="stackField" class="controls" rows="15" cols="5"></textarea>
         </form>
     </body>
 </html>
