@@ -1,0 +1,12 @@
+button {
+    margin: 10px 0px 10px 0px;
+}
+
+label {
+    margin-right: 10px;
+}
+
+input[type="textarea"] {
+    width: 30px;
+    margin-right: 5px;
+}

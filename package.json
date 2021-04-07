@@ -1,0 +1,29 @@
+{
+  "name": "nc_task_02",
+  "version": "1.0.0",
+  "description": "Data Structure \"Stack\"",
+  "main": "script.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diligentConcernist/NC_task_02.git"
+  },
+  "author": "Diana Gruzdeva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diligentConcernist/NC_task_02/issues"
+  },
+  "homepage": "https://github.com/diligentConcernist/NC_task_02#readme",
+  "devDependencies": {
+    "@babel/core": "^7.13.14",
+    "@babel/preset-env": "^7.13.12",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.30.0",
+    "webpack-cli": "^4.6.0"
+  }
+}
